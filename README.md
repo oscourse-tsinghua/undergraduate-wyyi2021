@@ -1,3 +1,3 @@
 # undergraduate-wyyi2021
 
-https://github.com/oscourse-tsinghua/undergraduate-wyyi2021
+http://os.cs.tsinghua.edu.cn/research/undergraduate/wyyi2021
