@@ -1,0 +1,29 @@
+% !TeX root = ../thuthesis-example.tex
+
+% 中英文摘要和关键字
+
+\begin{abstract}
+ 车载自组网是一种自组织、无中心的无线开放式网络，为交通参与者之间的通信而构建，基于网络可以实现安全监控、辅助驾驶、路况查询、事故预警等应用功能，提高人们的出行体验。车载自组网中包含大量车辆间交互的信息，但是由于其流动性强、时空特性变化快的特性，车辆间共享的信息并不总是真实可靠的，因此如何判断通讯对象是否可信成为保障自组网通信质量的关键。
+ 
+ 针对这一问题，本文提出了一个车辆信誉评估算法，基于车辆间交互的结果对交互参与者进行可信度的量化评估，主要考察位置验证、消息传播两类交互模式，同时引入时间与距离衰减、历史交互结果平滑等概念，使得算法在实际应用场景分析中展现出科学性与稳定性。
+
+其次，本文实现了一套车辆信誉评估的原型系统，在系统中通过区块链智能合约实现了上述算法，保证信誉评估过程的安全性；同时将智能合约与浏览器进行结合，在浏览器端实现了车辆行驶信息的获取、车辆交互结果的模拟以及信誉评估结果的地图展示。利用该原型系统，本文设计了多种交通场景的模拟实验，对信誉评估算法的参数特征进行了分析与调优。最后，本文使用模拟数据与真实数据对系统进行了完整测试，分析了信誉评估结果与算法设计目标的符合情况，从而验证了信誉系统的可行性。
+
+  % 关键词用“英文逗号”分隔，输出时会自动处理为正确的分隔符
+  \thusetup{
+    keywords = {车载自组网,信誉评估,区块链,位置验证,消息传播},
+  }
+\end{abstract}
+
+\begin{abstract*}
+VANET is a self-organizing, decentralized and open wireless network, constructed for communications between traffic participants. Based on VANET, various applications can be developed for safety monitoring, auxiliary driving, traffic inquiry, accident alerting, etc., which help provide people with better transport experience. VANET contains myriad information about interactions between vehicles, but due to the high mobility and time-space variability of the network, shared information cannot always be trusted. Therefore, it becomes a key problem to determine whether the target for communication is reliable. 
+
+As a solution, this article proposes an algorithm for vehicular trust evaluation, which gives a quantitative assessment for the credibility of a vehicle based on the results of its interaction with other vehicles. The algorithm mainly involves two interaction patterns, proof of location and message transmission, and further introduces damping factors based on time and distance, as well as interaction history for result smoothing, showing plausibility in the analysis of practical scenarios.
+
+Secondly, the article develops prototype system for vehicular trust evaluation, using smart contract on blockchains to realize the algorithm while ensuring safety for the calculation process; the smart contract is then combined with a browser-side program, where vehicle locations are acquired, interactions simulated and evaluation results displayed. Using this protosystem, this article designs a series of simulation experiments for various traffic conditions, in order to analyse, adjust and optimize the parameters of the evaluation algorithm. Finally, the article runs integrated tests on the protosystem using both simulated and real GPS data, compares the result with the design goals of the algorithm, and confirms the feasibility of the system.
+
+  % Use comma as seperator when inputting
+  \thusetup{
+    keywords* = {VANET, trust evaluation, blockchain, proof of location, message transmission},
+  }
+\end{abstract*}

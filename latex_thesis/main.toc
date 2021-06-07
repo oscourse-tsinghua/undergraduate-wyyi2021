@@ -1,0 +1,51 @@
+\contentsline {chapter}{\numberline {第1章}绪论}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}研究背景}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}相关工作}{2}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}区块链与智能合约}{2}{subsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2}车辆位置验证}{2}{subsection.1.2.2}%
+\contentsline {subsection}{\numberline {1.2.3}车载网信誉管理系统}{2}{subsection.1.2.3}%
+\contentsline {section}{\numberline {1.3}论文的研究内容及贡献}{3}{section.1.3}%
+\contentsline {chapter}{\numberline {第2章}车辆信誉评估算法的设计}{4}{chapter.2}%
+\contentsline {section}{\numberline {2.1}基本设计思路}{4}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}信誉值影响因素}{4}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}交互模型与算法流程}{5}{subsection.2.1.2}%
+\contentsline {section}{\numberline {2.2}信誉计算方式}{7}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}时间衰减系数}{7}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}基于位置验证的信誉计算}{7}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}基于消息传播的信誉计算}{8}{subsection.2.2.3}%
+\contentsline {section}{\numberline {2.3}科学性分析}{8}{section.2.3}%
+\contentsline {section}{\numberline {2.4}本章小结}{10}{section.2.4}%
+\contentsline {chapter}{\numberline {第3章}信誉评估算法原型系统的实现}{11}{chapter.3}%
+\contentsline {section}{\numberline {3.1}总体框架及运行环境}{11}{section.3.1}%
+\contentsline {section}{\numberline {3.2}车辆交互模拟}{12}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}位置验证模拟}{12}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}消息传播模拟}{13}{subsection.3.2.2}%
+\contentsline {section}{\numberline {3.3}信誉评估智能合约}{14}{section.3.3}%
+\contentsline {section}{\numberline {3.4}地图展示}{15}{section.3.4}%
+\contentsline {section}{\numberline {3.5}本章小结}{15}{section.3.5}%
+\contentsline {chapter}{\numberline {第4章}信誉算法的参数调优与特征分析}{16}{chapter.4}%
+\contentsline {section}{\numberline {4.1}测试方法}{16}{section.4.1}%
+\contentsline {section}{\numberline {4.2}参数设计与分析}{16}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}时间衰减参数}{17}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}基于位置验证的信誉计算参数}{18}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}基于消息传播的信誉计算参数}{20}{subsection.4.2.3}%
+\contentsline {section}{\numberline {4.3}参数选取结果}{22}{section.4.3}%
+\contentsline {section}{\numberline {4.4}本章小结}{23}{section.4.4}%
+\contentsline {chapter}{\numberline {第5章}原型系统的综合测试结果}{24}{chapter.5}%
+\contentsline {section}{\numberline {5.1}模拟数据测试结果}{24}{section.5.1}%
+\contentsline {section}{\numberline {5.2}实际数据测试结果}{24}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}数据处理}{24}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}结果展示与分析}{25}{subsection.5.2.2}%
+\contentsline {section}{\numberline {5.3}分析与改进}{27}{section.5.3}%
+\contentsline {section}{\numberline {5.4}本章小结}{27}{section.5.4}%
+\contentsline {chapter}{\numberline {第6章}结论}{29}{chapter.6}%
+\setcounter {tocdepth}{0}
+\contentsline {chapter}{插图索引}{30}{section*.25}%
+\contentsline {chapter}{表格索引}{31}{section*.27}%
+\contentsline {chapter}{参考文献}{32}{section*.29}%
+\setcounter {tocdepth}{0}
+\contentsline {chapter}{致\hskip 2em\relax 谢}{34}{section*.31}%
+\contentsline {chapter}{声\hspace {2em}明}{35}{section*.33}%
+\contentsline {chapter}{指导教师学术评语}{36}{appendix*.35}%
+\contentsline {chapter}{答辩委员会决议书}{37}{appendix*.36}%
+\contentsfinish 

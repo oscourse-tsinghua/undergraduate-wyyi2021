@@ -1,0 +1,129 @@
+\begin{thebibliography}{18}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{#1}
+\expandafter\ifx\csname urlstyle\endcsname\relax\else
+  \urlstyle{same}\fi
+\expandafter\ifx\csname href\endcsname\relax
+  \DeclareUrlCommand\doi{\urlstyle{rm}}
+  \def\eprint#1#2{#2}
+\else
+  \def\doi#1{\href{https://doi.org/#1}{\nolinkurl{#1}}}
+  \let\eprint\href
+\fi
+
+\bibitem[Dorri et~al.(2017)Dorri, Steger, Kanhere, and Jurdak]{blockchain0}
+Dorri~A, Steger~M, Kanhere~S~S, et~al.
+\newblock Blockchain: A distributed solution to automotive security and
+  privacy\allowbreak[J/OL].
+\newblock IEEE Communications Magazine, 2017, 55\allowbreak (12): 119-125.
+\newblock DOI: \doi{10.1109/MCOM.2017.1700879}.
+
+\bibitem[Leiding et~al.(2016)Leiding, Memarmoshrefi, and
+  Hogrefe]{blockchaineth}
+Leiding~B, Memarmoshrefi~P, Hogrefe~D.
+\newblock Self-managed and blockchain-based vehicular ad-hoc
+  networks\allowbreak[C]//\allowbreak
+Acm International Joint Conference on Pervasive \& Ubiquitous Computing:
+  Adjunct.
+\newblock 2016: 137-140.
+
+\bibitem[Brambilla et~al.(2016)Brambilla, Amoretti, and Zanichelli]{p2ppof}
+Brambilla~G, Amoretti~M, Zanichelli~F.
+\newblock Using block chain for peer-to-peer
+  proof-of-location\allowbreak[J/OL].
+\newblock CoRR, 2016, abs/1607.00174.
+\newblock \url{http://arxiv.org/abs/1607.00174}.
+
+\bibitem[Javali et~al.(2016)Javali, Revadigar, Rasmussen, Wen, and Jha]{alice}
+Javali~C, Revadigar~G, Rasmussen~K~B, et~al.
+\newblock I am alice, i was in wonderland: Secure location proof generation and
+  verification protocol\allowbreak[C]//\allowbreak
+Local Computer Networks.
+\newblock 2016.
+
+\bibitem[Lu et~al.(2016)Lu, Zhou, Haojin, Zhu, Yi, Li, Limin, and
+  Sun]{Lu2016Privacy}
+Lu, Zhou, Haojin, et~al.
+\newblock Privacy-preserving location proof for securing large-scale
+  database-driven cognitive radio?networks\allowbreak[J].
+\newblock IEEE internet of things journal, 2016, 3\allowbreak (4): 563-571.
+
+\bibitem[Zhu et~al.(2013)Zhu and Cao]{2013Toward}
+Zhu~Z, Cao~G.
+\newblock Toward privacy preserving and collusion resistance in a location
+  proof updating system\allowbreak[J].
+\newblock IEEE Transactions on Mobile Computing, 2013.
+
+\bibitem[Li et~al.(2012)Li, Malip, Martin, Ng, and Zhang]{reputation}
+Li~Q, Malip~A, Martin~K~M, et~al.
+\newblock A reputation-based announcement scheme for vanets\allowbreak[J].
+\newblock IEEE Transactions on Vehicular Technology, 2012, 61\allowbreak (9):
+  4095-4108.
+
+\bibitem[Raya et~al.(2008)Raya, Papadimitratos, Gligor, and Hubaux]{ephemeral}
+Raya~M, Papadimitratos~P, Gligor~V~D, et~al.
+\newblock On data-centric trust establishment in ephemeral ad hoc
+  networks\allowbreak[C]//\allowbreak
+Infocom the Conference on Computer Communications IEEE.
+\newblock 2008.
+
+\bibitem[Huang et~al.(2017)Huang, Rong, Kang, and Yan]{2017Distributed}
+Huang~X, Rong~Y, Kang~J, et~al.
+\newblock Distributed reputation management for secure and efficient vehicular
+  edge computing and networks\allowbreak[J].
+\newblock IEEE Access, 2017, PP\allowbreak (99): 1-1.
+
+\bibitem[Yang et~al.(2018)Yang, Yang, Lei, Zheng, and Leung]{2018Blockchain}
+Yang~Z, Yang~K, Lei~L, et~al.
+\newblock Blockchain-based decentralized trust management in vehicular
+  networks\allowbreak[J].
+\newblock IEEE Internet of Things Journal, 2018: 1-1.
+
+\bibitem[Rawat et~al.(2015)Rawat, Danda, Weigle, Michele, Yan, Gongjun, Bista,
+  and Bhed]{rss}
+Rawat, Danda~B, Weigle, et~al.
+\newblock Trust on the security of wireless vehicular ad-hoc
+  networking\allowbreak[J].
+\newblock Ad-hoc \& sensor wireless networks, 2015.
+
+\bibitem[Lu et~al.(2018)Lu, Liu, Wang, Gang, and Liu]{density}
+Lu~Z, Liu~W, Wang~Q, et~al.
+\newblock A privacy-preserving trust model based on blockchain for
+  vanets\allowbreak[J].
+\newblock IEEE Access, 2018, PP: 1-1.
+
+\bibitem[Islam et~al.(2020)Islam, Badsha, and Sengupta]{v2v}
+Islam~S, Badsha~S, Sengupta~S.
+\newblock A light-weight blockchain architecture for v2v knowledge sharing at
+  vehicular edges\allowbreak[C/OL]//\allowbreak
+2020 IEEE International Smart Cities Conference (ISC2).
+\newblock 2020: 1-8.
+\newblock DOI: \doi{10.1109/ISC251055.2020.9239055}.
+
+\bibitem[Deng et~al.(2020)Deng, Liu, Wang, and Zhao]{edge}
+Deng~X, Liu~J, Wang~L, et~al.
+\newblock A trust evaluation system based on reputation data in mobile edge
+  computing network\allowbreak[J].
+\newblock Peer-to-Peer Networking and Applications, 2020, 13\allowbreak (5).
+
+\bibitem[李玮祺(2020)]{lwq}
+李玮祺.
+\newblock 基于区块链和手机传感器的车辆位置验证\allowbreak[Z].
+\newblock 2020.
+
+\bibitem[Agafonkin(2010)]{leaflet}
+Agafonkin~V.
+\newblock Leaflet\allowbreak[Z].
+\newblock 2010.
+
+\bibitem[contributors(2007)]{osm}
+contributors~�~O.
+\newblock Openstreetmap\allowbreak[Z].
+\newblock 2007.
+
+\bibitem[pgRouting Community(2008)]{pg}
+pgRouting Community.
+\newblock osm2pgrouting\allowbreak[Z].
+\newblock 2008.
+
+\end{thebibliography}

@@ -1,0 +1,18 @@
+\contentsline {figure}{\numberline {2.1}{\ignorespaces 信誉评估算法交互模型示意图\relax }}{6}{figure.caption.10}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces 信誉评估算法流程图\relax }}{6}{figure.caption.11}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces 车辆信誉评估原型系统架构图\relax }}{11}{figure.caption.12}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces 不同$\mitdelta $值在两种车辆分布模式下的信誉曲线\relax }}{17}{figure.caption.14}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces 不同$\mitdelta $值在同一组交互结果下的信誉曲线\relax }}{19}{figure.caption.15}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces 给定验证成功率时，权重参数不同数量关系对应的信誉曲线\relax }}{19}{figure.caption.16}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces 给定验证成功率时，权重参数不同取值对应的信誉曲线\relax }}{20}{figure.caption.17}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces 不同$\mitgamma $值在三种评价分布模式下对应的消息总评价均值\relax }}{21}{figure.caption.18}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces 不同$\mitgamma $值在两种评价分布模式下对应的消息总评价均值与最值\relax }}{22}{figure.caption.19}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces 模拟数据测试结果的地图展示\relax }}{25}{figure.caption.20}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces 模拟数据测试结果的信誉曲线\relax }}{25}{figure.caption.21}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces 实际数据测试结果的地图展示\relax }}{26}{figure.caption.22}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces 实际数据测试结果的信誉曲线\relax }}{26}{figure.caption.23}%
+\contentsline {figure}{\numberline {5.5}{\ignorespaces 实际数据测试结果的局部放大图\relax }}{28}{figure.caption.24}%
+\let \contentsline \ttl@gobblecontents 
+\let \contentsline \ttl@gobblecontents 
+\contentsfinish 
+\contentsfinish 
