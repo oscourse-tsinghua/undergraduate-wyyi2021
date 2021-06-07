@@ -19,20 +19,30 @@
 
 	<link rel="stylesheet" href="leaflet.css" />
 	<link rel="stylesheet" href="leaflet.label.css" />
-	<script src="leaflet-src-Geohash.js"></script>
+	<!--<script src="leaflet-src-Geohash.js"></script>
+	<script src="leaflet.label-src.js"></script>
+	<script src="leaflet.label.js"></script>
+	<script src="OSMBuildings-Leaflet.debug.js"></script>
+	-->
+	<script src="leaflet-src.js"></script>
+	<script src="TileLayer.GeoJSON.js"></script>	
 	<script src="leaflet.label-src.js"></script>
 	<script src="leaflet.label.js"></script>
 	<script src="OSMBuildings-Leaflet.debug.js"></script>
 
     <script src="/usr/lib/node_modules/web3/dist/web3.min.js"></script>
-    <script src="./geohash-new.js"></script>
+    <script src="./geohash.js"></script>
     <script src="./geolib.js"></script>
     <script src="./common.js"></script>
     <script src="GeohashLayer.GeoJSON.js"></script>
 	<script src="https://s3.pstatp.com/cdn/expire-1-M/jquery/3.2.1/jquery.min.js"></script>
 
+	<script src="./trafficContract.js"></script>
 	<script src="./gpsarray.js"></script>
+	<script src="./routes.js"></script>
+	<script src="./neighbors.js"></script>
 	<script src="./waysall.js"></script>
+	<script src="./gradientColor.js"></script>
 
 
 <script type="text/javascript">
@@ -43,285 +53,6 @@ var mapContractAbi = [];
 var mapContractAddress = '';
 var mapContractServer = '';
 var mapContract;
-
-//Traffic contract
-var trafficContractAbi = [{
-      "constant": true,
-      "inputs": [
-        {
-          "internalType": "uint256",
-          "name": "x1",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "x2",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "y1",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "y2",
-          "type": "uint256"
-        }
-      ],
-      "name": "distance",
-      "outputs": [
-        {
-          "internalType": "int256",
-          "name": "",
-          "type": "int256"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "pure",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "internalType": "string",
-          "name": "uuid",
-          "type": "string"
-        }
-      ],
-      "name": "revalue",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "internalType": "string",
-          "name": "uuid",
-          "type": "string"
-        }
-      ],
-      "name": "getQuality",
-      "outputs": [
-        {
-          "internalType": "int256",
-          "name": "",
-          "type": "int256"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "internalType": "string",
-          "name": "uuid",
-          "type": "string"
-        }
-      ],
-      "name": "getSinglePos",
-      "outputs": [
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "internalType": "string",
-          "name": "uuid",
-          "type": "string"
-        },
-        {
-          "internalType": "uint256",
-          "name": "time",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "_latOri",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "_lonOri",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "_latFix",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "_lonFix",
-          "type": "uint256"
-        }
-      ],
-      "name": "setSinglePos",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "internalType": "string",
-          "name": "uuid",
-          "type": "string"
-        },
-        {
-          "internalType": "bool",
-          "name": "isVerifier",
-          "type": "bool"
-        }
-      ],
-      "name": "sendValid",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "internalType": "string",
-          "name": "uuid",
-          "type": "string"
-        },
-        {
-          "internalType": "bool",
-          "name": "isVerifier",
-          "type": "bool"
-        }
-      ],
-      "name": "successValid",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "internalType": "string",
-          "name": "uuid",
-          "type": "string"
-        },
-        {
-          "internalType": "string",
-          "name": "msgId",
-          "type": "string"
-        },
-        {
-          "internalType": "int256",
-          "name": "_level",
-          "type": "int256"
-        },
-        {
-          "internalType": "int256",
-          "name": "_density",
-          "type": "int256"
-        }
-      ],
-      "name": "newMessage",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "internalType": "string",
-          "name": "senderId",
-          "type": "string"
-        },
-        {
-          "internalType": "string",
-          "name": "msgId",
-          "type": "string"
-        },
-        {
-          "internalType": "string",
-          "name": "nborId",
-          "type": "string"
-        },
-        {
-          "internalType": "int256",
-          "name": "rating",
-          "type": "int256"
-        }
-      ],
-      "name": "rateMessage",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "internalType": "string",
-          "name": "senderId",
-          "type": "string"
-        },
-        {
-          "internalType": "string",
-          "name": "msgId",
-          "type": "string"
-        }
-      ],
-      "name": "checkMessage",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    }];
-var trafficContractAccount = '0x991F119b11e78280219E18e107f7e3b970633BC8'; 
-var trafficContractAddress = '0x9aC0F24464bfE041bCDdAfBeCdcACDe18B77F89B';
-var trafficContractServer = 'http://localhost:8545';
-var trafficContract;
 
 //Contract Init
 function initContract() {
@@ -428,7 +159,8 @@ var direction;
 var n;
 var nowCalc;
 var roadNum;
-var quality = 0;
+var lastTime;
+var quality = 40;
 
 function getLocation() {
     if (navigator.geolocation) { 
@@ -719,13 +451,64 @@ function match(index) {
 
 var maxlat, minlat, maxlon, minlon;
 
+
+
 function initTrace() {	
 	maxlat = 0; 
 	minlat = 180;
 	maxlon = 0;
 	minlon = 180;
+	/*
+	testarray = [];
+	testarray.push(locationarray[0]);
+	var i = 0;
+	
+	for(var j=0; j<99; i++, j++) {
+		newelement = [testarray[i][0]+1, testarray[i][1]+0.0001, testarray[i][2]];
+		testarray.push(newelement);
+	}
+	for(var j=0; j<99; i++, j++) {
+		newelement = [testarray[i][0]+1, testarray[i][1], testarray[i][2]+0.0001];
+		testarray.push(newelement);
+	}
+	for(var j=0; j<99; i++, j++) {
+		newelement = [testarray[i][0]+1, testarray[i][1]-0.0001, testarray[i][2]];
+		testarray.push(newelement);
+	}
+	for(var j=0; j<99; i++, j++) {
+		newelement = [testarray[i][0]+1, testarray[i][1], testarray[i][2]+0.0001];
+		testarray.push(newelement);
+	}
+	for(var j=0; j<99; i++, j++) {
+		newelement = [testarray[i][0]+1, testarray[i][1]+0.0001, testarray[i][2]];
+		testarray.push(newelement);
+	}
+	for(var j=0; j<99; i++, j++) {
+		newelement = [testarray[i][0]+1, testarray[i][1]+0.0001, testarray[i][2]];
+		testarray.push(newelement);
+	}
+	for(var j=0; j<99; i++, j++) {
+		newelement = [testarray[i][0]+1, testarray[i][1], testarray[i][2]-0.0001];
+		testarray.push(newelement);
+	}
+	for(var j=0; j<99; i++, j++) {
+		newelement = [testarray[i][0]+1, testarray[i][1], testarray[i][2]-0.0001];
+		testarray.push(newelement);
+	}
+	*/
+	//console.log(testarray);
+	locationarray = routearray;
 	n = locationarray.length;
+	var routecnt = 0;
+	//console.log('n', n);
 	for (var i = 0; i < n; i++) {
+	
+		if(locationarray[i][3]!= 1782) {
+			//console.log('n', i);
+			continue;
+		}
+		
+		routecnt++;
 		locBuffer.push(encode_geohash(locationarray[i][2],locationarray[i][1]));
 		/*
 		if(locTime.length == 0) {
@@ -740,6 +523,8 @@ function initTrace() {
 				locTime.push(locTime[i-1] + 2);
 			}
 		}*/
+		
+		
 		locTime.push(locationarray[i][0]);
 
 		if (maxlat < locationarray[i][1]) {
@@ -758,8 +543,21 @@ function initTrace() {
 		//console.log(locTime[i]);
 	}
 	//116.32932399 116.31556457 40.00011439 39.955846
-	console.log(maxlat, minlat, maxlon, minlon);
+	console.log(maxlat, minlat, maxlon, minlon, routecnt);
 	nowCalc = 0;
+	lastTime = locTime[0] - 1;
+	initNeighbors();
+}
+
+var neighborTime = [];
+var neighborLoc = [];
+function initNeighbors() {
+	var nbNum = neighbors.length;
+	for (var i=0; i<nbNum; i++) {
+		neighborTime.push(neighbors[i][0]);
+		neighborLoc.push(encode_geohash(neighbors[i][2],neighbors[i][1]));
+	}
+	console.log('nbNum', nbNum);
 }
 
 function initMap() {
@@ -832,47 +630,192 @@ async function testMatch() {
 }
 
 async function matchAll() {
-	for (var i = 0; i < 200; i++) {
+	for (var i = 0; i < 100; i++) {
 		await calcNext();
 	}
 }
 
+function printQualityRecord() {
+	for(var i=0; i<8; i++) {
+		var partRecord = qualityRecord.slice(i*100, Math.min(i*100+100, qualityRecord.length));
+		document.writeln(partRecord);
+	}
+	document.writeln(verifyRecord);
+}
+
+//var verify = [9, 13, 17, 22, 27, 39, 46, 52, 54, 76, 83, 85, 86, 90, 91, 92, 93, 94, 95, 96];
+//var verify = [1, 4, 8, 16, 18, 23, 29, 35, 45, 54, 62, 65, 68, 73, 74, 78, 82, 90, 94];
+var orient = ['v', 'h', 'v', 'h', 'v', 'v', 'h', 'h'];
+//var verify = [1, 4, 8, 16, 18, 23, 29, 35, 45, 54, 62, 65, 68, 73, 74, 78, 82, 90, 94, 109, 113, 117, 122, 127, 139, 146, 152, 154, 176, 183, 185, 186, 190, 191, 192, 193, 194, 195, 196, 210, 212, 235, 240, 241, 243, 245, 258, 268, 282, 284, 287, 289, 290, 293, 296, 297, 298, 312, 321, 342, 344, 372, 380, 381, 383, 386, 387, 389, 389, 395, 397, 398, 421, 425, 427, 435, 464, 467, 471, 473, 490, 494, 504, 506, 509, 521, 535, 538, 547, 564, 580, 583, 587, 588, 591, 593, 593, 594, 596, 621, 625, 631, 632, 638, 643, 645, 654, 656, 661, 677, 685, 698, 702, 705, 716, 728, 729, 736, 741, 750, 751, 753, 759, 761, 762, 764, 778, 782, 790];
+var gradient = new gradientColor('#FF0000', '#00FF00', 101);
+var crowd = [];
+var crowdnum = crowd.length;
+var center = 20;
+//var decay = [0.1, 0.2, 0.3, 0.5];
+var decay = 0.2;
+//var thetas = [1, 2, 2, 3];
+//var thetaf = [-2, -3, -4, -5];
+var thetas = 2;
+var thetaf = -3;
+var rate = [0.8, 0.4, 0.6, 0.6, 0.4, 0.8, 0.8, 0.6];
+var success = 0;
+var failure = 0;
+var qualityRecord = [];
+var qualityTest = [];
+var testnum = 4;
+var gamma = 0.2;
+var verifyRecord = [];
+//var verifyRecord = [true,false,true,true,true,true,true,false,true,true,false,false,true,true,false,true,true,true,false];
+
+function messageEval() {
+	var sum = 0;
+	var dis, rate;
+	for(var i=0; i<crowdnum; i++) {
+		dis = Math.abs(center-crowd[i]);
+		rate = Math.round(10 * Math.rand());
+		sum = sum + rate*Math.pow(Math.E, gamma*dis);
+	}
+	sum = sum / crowdnum;
+	console.log(sum);
+}
+
+function drawNeighborTest(stage, nbColor) {
+	if(orient[stage] == 'v') {
+		var nb_geohash = encode_geohash(locationarray[nowCalc][2] + 0.001*Math.random() - 0.0005,locationarray[nowCalc][1]);
+	}
+	else {
+		var nb_geohash = encode_geohash(locationarray[nowCalc][2],locationarray[nowCalc][1] + 0.001*Math.random() - 0.0005);
+	}
+	var point = L.polyline([nb_geohash,nb_geohash],{color:nbColor,fillColor:nbColor,fillOpacity:1});
+		map.addLayer(point);
+}
+
+function drawNeighbor(nbIndex, nbColor) {
+	var nb_geohash = neighborLoc[nbIndex];
+	var range = decode_geohash(nb_geohash);
+	var midLat = (range[2] + range[3]) / 2;
+	var midLon = (range[0] + range[1]) / 2;
+	var point = L.circle([midLat,midLon],1,{color:nbColor,fillColor:nbColor,fillOpacity:1});
+		map.addLayer(point);
+}
+
 async function calcNext() {
+	if(nowCalc >= locBuffer.length)
+		return;
+		
 	var geohash = locBuffer[nowCalc];
-	//var range = decode_geohash(geohash);
-	//var midLat = (range[2] + range[3]) / 2;
-	//var midLon = (range[0] + range[1]) / 2;
-	//var point = L.circle([midLat,midLon],3,{color:'#FF0000',fillColor:'#FF0000',fillOpacity:1});
+	var range = decode_geohash(geohash);
+	var midLat = (range[2] + range[3]) / 2;
+	var midLon = (range[0] + range[1]) / 2;		
+	var point = L.circle([midLat,midLon],3,{color:gradient[quality],fillColor:gradient[quality],fillOpacity:1});
+	
+	//var point = L.polyline([geohash,geohash],{color:gradient[quality],fillColor:gradient[quality],fillOpacity:1});
+	map.addLayer(point);
+	//upload(nowCalc);
+	//await getQuality();
+	if(nowCalc % 100 == 0 && nowCalc != 0) {
+		success = 0;
+		failure = 0;
+	}
+	
+	var rand;
+	//console.log(verify, verify.indexOf(nowCalc));
+	//if(verify.indexOf(nowCalc) > -1) {
+	if(neighborTime.indexOf(locTime[nowCalc]) > -1) {
+		var stage = Math.floor(nowCalc/100);
+		var nbIndex = neighborTime.indexOf(locTime[nowCalc]);
+		//console.log(nbIndex);
+		var nbColor;
+		rand = Math.random();
+		//console.log(rand);
+		var delta;
+		if(nresults[nbIndex]==true) {
+		//if(rand < rate[stage]) {
+		//if(verifyRecord.pop()==true) {
+			success = success + 1;
+			verifyRecord.push(true);
+			delta = thetas;
+			nbColor = '#1E90FF';
+		}
+		else {
+			failure = failure + 1;
+			//console.log("fail");
+			verifyRecord.push(false);
+			delta = thetaf;
+			nbColor = '#A020F0';
+		}
+		delta = delta + (thetas-thetaf) * success / (success + failure) + thetaf;
+		var interval = Math.max(5, neighborTime[nbIndex]-lastTime+3);
+		quality = quality + Math.round((1/decay/interval) * delta);
+		console.log(delta, interval);
+		quality = Math.min(quality, 100);
+		quality = Math.max(quality, 0);
+		lastTime = neighborTime[nbIndex];
+		drawNeighbor(nbIndex, nbColor);
+	}
+	qualityRecord.push(quality);
+	console.log(nowCalc, quality, gradient[quality]);
+	//console.log(nowCalc);
+	//console.log(nowCalc, routearray0[nowCalc][1], routearray0[nowCalc][2]);
+	nowCalc = nowCalc + 1;
+}
+
+async function calcNextTest() {
+	var geohash = locBuffer[nowCalc];
 	var point = L.polyline([geohash,geohash],{color:'#FF0000',fillColor:'#FF0000',fillOpacity:1});
 	map.addLayer(point);
 	//console.log('calcNext()', nowCalc, midLat, midLon);
-	//point.addTo(map);
+	//upload(nowCalc);
+	//await getQuality();
+	if(nowCalc % 100 == 0 && nowCalc != 0) {
+		success = 0;
+		failure = 0;
+		for(var i=0; i<testnum; i++) {
+			document.writeln(qualityRecord[i]);
+		}
+		document.writeln(verifyRecord);
 
-	match(nowCalc);
-	//console.log("test", locBufferFix[nowCalc]);
-	//var range = decode_geohash(locBufferFix[nowCalc]);
-	//var midLat = (range[2] + range[3]) / 2;
-	//var midLon = (range[0] + range[1]) / 2;		
-	//var point = L.circle([midLat,midLon],3,{color:'#00FF00',fillColor:'#00FF00',fillOpacity:1});
-	var newgeohash = locBufferFix[nowCalc];	
-	var point = L.polyline([newgeohash,newgeohash],{color:'#00FF00',fillColor:'#00FF00',fillOpacity:1});
-	map.addLayer(point);		
-	
-	upload(nowCalc);
+	}
 
-	if (getDistanceByGeohash(locBufferFix[nowCalc], locBuffer[nowCalc]) < 0.8) {
-		quality++;
-	} 
-	if (nowCalc % 20 == 19) {
-		quality++;
+	var rand;
+	if(verify.indexOf(nowCalc) > -1) {
+		var point = L.polyline([geohash,geohash],{color:'#00FF00',fillColor:'#00FF00',fillOpacity:1});
+		map.addLayer(point);
+		rand = Math.random();
+
+		//console.log(rand);
+		if(rand < rate) {
+		//if(verifyRecord.pop()==true) {
+			success = success + 1;
+			verifyRecord.push(true);
+			for(var i=0; i<testnum; i++) {
+				var delta = thetas[i];
+				delta = delta + (thetas[i]-thetaf[i])*success / (success + failure) + thetaf[i];
+				qualityTest[i] = qualityTest[i] + Math.round((1/decay/(nowCalc-lastTime)) * delta);
+				qualityTest[i] = Math.min(qualityTest[i], 100);
+				qualityTest[i] = Math.max(qualityTest[i], 0);
+			}
+		}
+		else {
+			failure = failure + 1;
+			//console.log("fail");
+			verifyRecord.push(false);
+			for(var i=0; i<testnum; i++) {
+				var delta = thetaf[i];
+				delta = delta + (thetas[i]-thetaf[i])*success / (success + failure) + thetaf[i];
+				qualityTest[i] = qualityTest[i] + Math.round((1/decay/(nowCalc-lastTime)) * delta);
+				qualityTest[i] = Math.min(qualityTest[i], 100);
+				qualityTest[i] = Math.max(qualityTest[i], 0);
+			}
+		}
+		lastTime = nowCalc;
 	}
-	if (quality > 100) {
-		quality = 100;
+	for(var i=0; i<testnum; i++) {
+		qualityRecord[i].push(qualityTest[i]);
 	}
-	await getQuality();
 	//console.log(nowCalc, quality);//“结果整理2”的html中输出的两个数
+	//console.log(nowCalc);
 	nowCalc = nowCalc + 1;
-	
 }
 
 function sleep(delay) {
@@ -893,10 +836,11 @@ function sleep(delay) {
 <button id="matchAll">matchAll</button>
 <button id="calcNext">calcNext</button>
 <button id="getQuality">getQuality</button>
+<button id="printQualityRecord">printQualityRecord</button>
 
 <h2 id="value"></h2>
 
-<!-- <div id="mapDiv" style="width:1600px; height:1000px"></div> -->
+<div id="mapDiv" style="width:1600px; height:1000px"></div>
 
 <script>
 	$("#initMap").click(function(){
@@ -919,16 +863,20 @@ function sleep(delay) {
 	});	
 	$("#getQuality").click(function() {
 		getQuality();
+	});
+	$("#printQualityRecord").click(function() {
+		printQualityRecord();
 	});		
 
-	//initLeaflet();
-	//function initLeaflet() {
-		//map = L.map("mapDiv").setView([39.95844857,116.31668809],13);
-		//L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; <a 	href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);	
-	//}	
+	initLeaflet();
+	function initLeaflet() {
+		map = L.map("mapDiv").setView([39.95844857,116.31668809],13);
+		L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; <a 	href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);	
+	}	
 	
 </script>
 
+<!--
 <div id="map"></div>	
 	<script>
 		// setView设置地图放缩大小和中心点
@@ -1217,5 +1165,6 @@ function sleep(delay) {
 		// GeohashhighLayer.setZIndex(4);
 		// GeohashlowLayer.setZIndex(3);		
 	</script>
+-->
 </body>
 </html>
